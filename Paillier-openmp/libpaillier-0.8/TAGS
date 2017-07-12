@@ -1,0 +1,48 @@
+
+paillier.c,2521
+init_rand( gmp_randstate_t rand, paillier_get_rand_t get_rand, int bytes )init_rand24,699
+complete_pubkey( paillier_pubkey_t* pub )complete_pubkey42,988
+complete_prvkey( paillier_prvkey_t* prv, paillier_pubkey_t* pub )complete_prvkey49,1122
+paillier_keygen( int modulusbits,paillier_keygen58,1365
+paillier_enc( paillier_ciphertext_t* res,paillier_enc117,2667
+paillier_dec( paillier_plaintext_t* res,paillier_dec157,3448
+paillier_mul( paillier_pubkey_t* pub,paillier_mul178,3908
+paillier_exp( paillier_pubkey_t* pub,paillier_exp188,4141
+paillier_para_enc(int n, paillier_pubkey_t* pub, paillier_plaintext_t SS[], paillier_ciphertext_t S[])paillier_para_enc197,4341
+paillier_para_dec(int n, paillier_pubkey_t* pub, paillier_prvkey_t* prv, paillier_ciphertext_t S[], paillier_plaintext_t SS[])paillier_para_dec208,4614
+paillier_cipheradd( int n, int L, paillier_pubkey_t* pub, paillier_ciphertext_t et[], paillier_cipheradd219,4886
+paillier_plaintext_from_ui( unsigned long int x )paillier_plaintext_from_ui335,7887
+paillier_plaintext_from_bytes( void* m, int len )paillier_plaintext_from_bytes346,8103
+paillier_plaintext_to_bytes( int len,paillier_plaintext_to_bytes358,8331
+paillier_plaintext_from_str( char* str )paillier_plaintext_from_str389,8945
+paillier_plaintext_to_str( paillier_plaintext_t* pt )paillier_plaintext_to_str395,9054
+paillier_ciphertext_from_bytes( void* c, int len )paillier_ciphertext_from_bytes408,9284
+paillier_ciphertext_to_bytes( int len,paillier_ciphertext_to_bytes420,9517
+paillier_pubkey_to_hex( paillier_pubkey_t* pub )paillier_pubkey_to_hex436,9832
+paillier_prvkey_to_hex( paillier_prvkey_t* prv )paillier_prvkey_to_hex442,9928
+paillier_pubkey_from_hex( char* str )paillier_pubkey_from_hex448,10042
+paillier_prvkey_from_hex( char* str, paillier_pubkey_t* pub )paillier_prvkey_from_hex463,10360
+paillier_freepubkey( paillier_pubkey_t* pub )paillier_freepubkey476,10623
+paillier_freeprvkey( paillier_prvkey_t* prv )paillier_freeprvkey485,10767
+paillier_freeplaintext( paillier_plaintext_t* pt )paillier_freeplaintext493,10880
+paillier_freeciphertext( paillier_ciphertext_t* ct )paillier_freeciphertext500,10971
+paillier_get_rand_file( void* buf, int len, char* file )paillier_get_rand_file507,11064
+paillier_get_rand_devrandom( void* buf, int len )paillier_get_rand_devrandom527,11284
+paillier_get_rand_devurandom( void* buf, int len )paillier_get_rand_devurandom533,11394
+paillier_create_enc_zero()paillier_create_enc_zero539,11525
+
+paillier.h,753
+	int bits;  /* e.g., 1024 */bits58,1879
+	mpz_t n;   /* public modulus n = p q */n59,1908
+	mpz_t n_squared; /* cached to avoid recomputing */n_squared60,1949
+	mpz_t n_plusone; /* cached to avoid recomputing */n_plusone61,2001
+} paillier_pubkey_t;paillier_pubkey_t62,2053
+	mpz_t lambda;    /* lambda(n), i.e., lcm(p-1,q-1) */lambda72,2348
+	mpz_t x;   /* cached to avoid recomputing */x73,2402
+} paillier_prvkey_t;paillier_prvkey_t74,2448
+	mpz_t m;m82,2628
+} paillier_plaintext_t;paillier_plaintext_t83,2638
+	mpz_t c;c92,2857
+} paillier_ciphertext_t;paillier_ciphertext_t93,2867
+typedef void (*paillier_get_rand_t) ( void* buf, int len );paillier_get_rand_t104,3320
+#define PAILLIER_BITS_TO_BYTES(PAILLIER_BITS_TO_BYTES284,9693
